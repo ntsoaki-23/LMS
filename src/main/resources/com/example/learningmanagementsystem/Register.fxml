@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<StackPane fx:id="rootStackPane"
+           xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.learningmanagementsystem.controllers.RegisterController"
+           prefWidth="900" prefHeight="650">
+
+    <!-- Background Container with Fallback Gradient -->
+    <StackPane style="-fx-background-color: linear-gradient(to bottom right, #4a6fa5, #166088);">
+        <ImageView fx:id="backgroundImage"
+                   fitWidth="900"
+                   fitHeight="650"
+                   preserveRatio="false"/>
+    </StackPane>
+
+    <!-- Main Content Container -->
+    <VBox alignment="CENTER" spacing="20" style="-fx-background-color: rgba(255,255,255,0.85); -fx-padding: 30; -fx-background-radius: 12;">
+        <!-- Header Section -->
+        <VBox alignment="CENTER" spacing="5">
+            <Label text="📝 Register to LMS"
+                   style="-fx-font-size: 28px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
+            <Label text="Create your account below"
+                   style="-fx-font-size: 16px; -fx-text-fill: #7f8c8d;"/>
+        </VBox>
+
+        <!-- Form Fields -->
+        <GridPane hgap="15" vgap="15" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+            <!-- Full Name Field -->
+            <Label text="Full Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TextField fx:id="nameField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       promptText="Enter full name"
+                       style="-fx-pref-width: 250; -fx-padding: 10; -fx-font-size: 14px;"/>
+
+            <!-- Email Field -->
+            <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <TextField fx:id="emailField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       promptText="Enter email address"
+                       style="-fx-pref-width: 250; -fx-padding: 10; -fx-font-size: 14px;"/>
+
+            <!-- Password Field -->
+            <Label text="Password:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <PasswordField fx:id="passwordField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                           promptText="Enter password"
+                           style="-fx-pref-width: 250; -fx-padding: 10; -fx-font-size: 14px;"/>
+
+            <!-- Role Selection -->
+            <Label text="Role:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                   style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            <ComboBox fx:id="roleComboBox" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                      promptText="Select a role"
+                      style="-fx-pref-width: 250; -fx-font-size: 14px;">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Admin"/>
+                        <String fx:value="Instructor"/>
+                        <String fx:value="Student"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </GridPane>
+
+        <!-- Action Buttons -->
+        <HBox spacing="20" alignment="CENTER">
+            <!-- Register Button -->
+            <Button text="Register"
+                    onAction="#registerUser"
+                    style="-fx-background-color: #FFD700; -fx-text-fill: white; -fx-font-size: 14px;
+                           -fx-background-radius: 8; -fx-padding: 10 25; -fx-font-weight: bold;">
+                <effect>
+                    <DropShadow color="#FFD700" radius="5" spread="0.2"/>
+                </effect>
+            </Button>
+
+            <!-- Home Button with Fade Effect -->
+            <Button fx:id="homeButton"
+                    text="Back to Home"
+                    onAction="#goToHome"
+                    style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14px;
+                           -fx-background-radius: 8; -fx-padding: 10 25; -fx-font-weight: bold;">
+                <effect>
+                    <DropShadow color="#9370DB" radius="5" spread="0.2"/>
+                </effect>
+            </Button>
+        </HBox>
+
+        <!-- Footer Note -->
+        <Label text="Already have an account? Contact your administrator."
+               style="-fx-font-size: 12px; -fx-text-fill: #7f8c8d;"/>
+    </VBox>
+</StackPane>

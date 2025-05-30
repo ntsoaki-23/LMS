@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.learningmanagementsystem.controllers.EnrollmentManagementController"
+      spacing="10" alignment="CENTER" prefWidth="800" prefHeight="600">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Enrollment Management" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+    <TableView fx:id="availableCoursesTable">
+        <columns>
+            <TableColumn text="ID" prefWidth="70">
+                <cellValueFactory>
+                    <PropertyValueFactory property="courseId"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Name" prefWidth="200">
+                <cellValueFactory>
+                    <PropertyValueFactory property="courseName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Instructor" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="instructorName"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+    <Button text="Enroll in Selected Course" onAction="#enrollCourse" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    <Button text="Back to Dashboard" onAction="#goToDashboard" style="-fx-background-color: #9E9E9E; -fx-text-fill: white;"/>
+</VBox>
