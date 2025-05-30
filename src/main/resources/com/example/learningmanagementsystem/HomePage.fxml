@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.learningmanagementsystem.controllers.HomePageController"
+           fx:id="rootStackPane"
+           prefWidth="900" prefHeight="650">
+
+    <!-- Central VBox -->
+    <VBox alignment="CENTER" spacing="30" prefWidth="900" prefHeight="650"
+          style="-fx-background-color: transparent;">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+        </padding>
+
+        <!-- MenuBar at Top -->
+        <MenuBar VBox.vgrow="NEVER">
+            <Menu text="File">
+                <MenuItem text="Exit" onAction="#exitApplication"/>
+            </Menu>
+            <Menu text="Edit">
+                <MenuItem text="Undo"/>
+                <MenuItem text="Redo"/>
+            </Menu>
+            <Menu text="Help">
+                <MenuItem text="About" onAction="#showAboutDialog"/>
+            </Menu>
+        </MenuBar>
+
+        <!-- Spacer to center content -->
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Centered Content -->
+        <VBox alignment="CENTER" spacing="20">
+            <!-- Title -->
+            <Label text="🎓 Welcome to LMS Portal"
+                   style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #ffffff;"/>
+
+            <!-- Subtitle -->
+            <Label text="Your learning starts here. Manage your courses with ease."
+                   style="-fx-font-size: 16px; -fx-text-fill: #ffffff;"/>
+
+            <!-- Buttons -->
+            <HBox spacing="20" alignment="CENTER">
+                <Button fx:id="loginButton" text="Login"
+                        onAction="#goToLogin"
+                        style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 15px;
+                               -fx-background-radius: 8; -fx-padding: 12 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);"/>
+
+                <Button fx:id="registerButton" text="Register"
+                        onAction="#goToRegister"
+                        style="-fx-background-color: #ffd700; -fx-text-fill: white; -fx-font-size: 15px;
+                               -fx-background-radius: 8; -fx-padding: 12 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 8, 0, 0, 4);"/>
+            </HBox>
+        </VBox>
+
+        <!-- Spacer below -->
+        <Region VBox.vgrow="ALWAYS"/>
+    </VBox>
+</StackPane>

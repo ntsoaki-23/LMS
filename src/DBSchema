@@ -1,0 +1,68 @@
+-- Create database (run this first separately if needed)
+CREATE DATABASE learning_system2;
+
+-- Connect to the database (this is a psql command, not SQL)
+\c learning_system
+
+-- Create users table
+CREATE TABLE users (
+    user_id SERIAL PRIMARY KEY,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    role VARCHAR(20) NOT NULL,
+    CHECK (role IN ('Admin', 'Instructor', 'Student'))
+);
+
+-- Create courses table
+CREATE TABLE courses (
+    course_id SERIAL PRIMARY KEY,
+    course_name VARCHAR(100) NOT NULL,
+    instructor_user_id INT,
+    FOREIGN KEY (instructor_user_id) REFERENCES users(user_id) ON DELETE SET NULL
+);
+
+-- Create enrollments table
+CREATE TABLE enrollments (
+    enrollment_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    course_id INT NOT NULL,
+    enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    progress NUMERIC(5,2) DEFAULT 0.00,
+    UNIQUE(user_id, course_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
+);
+
+-- Create course_materials table
+CREATE TABLE course_materials (
+    material_id SERIAL PRIMARY KEY,
+    course_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    file_name VARCHAR(255) NOT NULL,
+    upload_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
+);
+
+-- Create assignments table
+CREATE TABLE assignments (
+    assignment_id SERIAL PRIMARY KEY,
+    course_id INT NOT NULL,
+    assignment_title VARCHAR(255) NOT NULL,
+    description TEXT,
+    due_date TIMESTAMP,
+    max_score DOUBLE PRECISION DEFAULT 100.0,
+    FOREIGN KEY (course_id) REFERENCES courses(course_id) ON DELETE CASCADE
+);
+
+-- Create submissions table
+CREATE TABLE submissions (
+    submission_id SERIAL PRIMARY KEY,
+    assignment_id INT NOT NULL,
+    user_id INT NOT NULL,
+    submission_date TIMESTAMP,
+    file_name VARCHAR(255),
+    score DOUBLE PRECISION DEFAULT 0.0,
+    FOREIGN KEY (assignment_id) REFERENCES assignments(assignment_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);

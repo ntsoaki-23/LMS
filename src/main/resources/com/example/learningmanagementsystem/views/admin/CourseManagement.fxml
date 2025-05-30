@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.example.learningmanagementsystem.controllers.CourseManagementController"
+      spacing="20" alignment="TOP_CENTER" prefWidth="800" prefHeight="600">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox style="-fx-background-color: #800080; -fx-padding: 15;">
+        <Label text="Course Management" style="-fx-text-fill: white; -fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Back to Dashboard" onAction="#goToDashboard" style="-fx-background-color: #FFD700; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Separator/>
+
+    <VBox spacing="15" style="-fx-background-color: #f5f5f5; -fx-padding: 15; -fx-background-radius: 5;">
+        <Label text="Course Details" style="-fx-font-weight: bold;"/>
+        <GridPane hgap="10" vgap="10">
+            <Label text="Course Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="courseNameField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="250"/>
+            <Label text="Instructor:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="instructorComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="250"/>
+        </GridPane>
+
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Add Course" onAction="#addCourse" style="-fx-background-color: #800080; -fx-text-fill: white;"/>
+            <Button text="Update Course" onAction="#updateCourse" style="-fx-background-color: #FFD700; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+
+    <VBox spacing="10">
+        <Label text="Course List" style="-fx-font-weight: bold;"/>
+        <TableView fx:id="coursesTable" prefHeight="300">
+            <columns>
+                <TableColumn text="ID" prefWidth="50">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="courseId"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Name" prefWidth="250">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="courseName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn text="Instructor" prefWidth="200">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="instructorName"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_RIGHT">
+            <Button text="Delete Selected Course" onAction="#deleteCourse" style="-fx-background-color: #9370DB; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+</VBox>

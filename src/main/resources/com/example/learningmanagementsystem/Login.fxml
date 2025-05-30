@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.collections.FXCollections?>
+
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.example.learningmanagementsystem.controllers.LoginController"
+           fx:id="rootStackPane"
+           prefWidth="800" prefHeight="500">
+
+    <VBox alignment="CENTER" spacing="20">
+
+
+        <Label text="🔐 Login to LMS"
+               style="-fx-font-size: 28px; -fx-text-fill: #ffffff; -fx-font-weight: bold;"/>
+
+        <Label text="Enter your credentials below"
+               style="-fx-font-size: 16px; -fx-text-fill: #ffffff;"/>
+
+        <GridPane hgap="15" vgap="15" alignment="CENTER">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+
+
+            <TextField fx:id="emailField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       promptText="Enter email"
+                       style="-fx-pref-width: 250; -fx-padding: 10;"/>
+
+
+            <PasswordField fx:id="passwordField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                           promptText="Enter password"
+                           style="-fx-pref-width: 250; -fx-padding: 10;"/>
+        </GridPane>
+
+        <HBox spacing="20" alignment="CENTER">
+            <Button text="Login"
+                    onAction="#login"
+                    style="-fx-background-color: #9370DB; -fx-text-fill: white; -fx-font-size: 14px;
+                           -fx-background-radius: 8; -fx-padding: 10 25;"/>
+
+            <Button text="Back to Home"
+                    onAction="#goToHome"
+                    style="-fx-background-color: #FFD700; -fx-text-fill: white; -fx-font-size: 14px;
+                           -fx-background-radius: 8; -fx-padding: 10 25;"/>
+        </HBox>
+
+    </VBox>
+</StackPane>
